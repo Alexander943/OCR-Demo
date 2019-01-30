@@ -37,6 +37,9 @@ android {
 
 dependencies {
 
+    // Kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
     // App's dependencies
     implementation "androidx.multidex:multidex:$multidexVersion"
     implementation "androidx.constraintlayout:constraintlayout:$constraintVersion"
@@ -60,7 +63,6 @@ dependencies {
     annotationProcessor "com.jakewharton:butterknife-compiler:$butterKnifeVersion"
 
     // Dagger dependencies
-//    compileOnly 'org.glassfish:javax.annotation:10.0-b28'
     implementation "com.google.dagger:dagger:$daggerVersion"
     implementation "com.google.dagger:dagger-android:$daggerVersion"
     implementation "com.google.dagger:dagger-android-support:$daggerVersion"
