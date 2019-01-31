@@ -1,9 +1,9 @@
-package com.mlkit.textrecognition.app.di.components;
+package com.mlkit.textrecognition.app.di.components
 
-import android.app.Application;
-import android.content.Context;
-import dagger.Binds;
-import dagger.Module;
+import android.app.Application
+import android.content.Context
+import dagger.Binds
+import dagger.Module
 
 /**
  * This is a Dagger module. We use this to bind our Application class as a Context in the AppComponent
@@ -11,12 +11,12 @@ import dagger.Module;
  * we simply need to expose our Application as Context.
  * One of the advantages of Dagger.Android is that your
  * Application & Activities are provided into your graph for you.
- * {@link AppComponent}.
+ * [com.mlkit.textrecognition.app.di.AppComponent].
  */
 @Module
-public abstract class AppModule {
+abstract class AppModule {
 
     @Binds
-    abstract Context bindContext(Application application);
+    internal abstract fun bindContext(application: Application): Context
 }
 

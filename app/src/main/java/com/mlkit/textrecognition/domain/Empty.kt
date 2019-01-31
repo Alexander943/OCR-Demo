@@ -1,3 +1,3 @@
 package com.mlkit.textrecognition.domain
 
-class DomainClass
+class Empty
