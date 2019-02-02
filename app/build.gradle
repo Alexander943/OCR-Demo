@@ -28,11 +28,6 @@ android {
             applicationIdSuffix ".debug"
         }
     }
-
-    compileOptions {
-        sourceCompatibility 1.8
-        targetCompatibility 1.8
-    }
 }
 
 dependencies {
@@ -57,10 +52,6 @@ dependencies {
     // RxJava
     implementation "io.reactivex.rxjava2:rxjava:$rxjavaVersion"
     implementation "io.reactivex.rxjava2:rxandroid:$rxandroidVersion"
-
-    // ButterKnife
-    implementation "com.jakewharton:butterknife:$butterKnifeVersion"
-    annotationProcessor "com.jakewharton:butterknife-compiler:$butterKnifeVersion"
 
     // Dagger dependencies
     implementation "com.google.dagger:dagger:$daggerVersion"
