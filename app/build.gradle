@@ -80,6 +80,9 @@ dependencies {
 
     // ML Kit
     implementation 'com.google.firebase:firebase-ml-vision:19.0.2'
+
+    // Timber
+    implementation 'com.jakewharton.timber:timber:4.7.1'
 }
 
 // ADD THIS AT THE BOTTOM
