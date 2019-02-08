@@ -9,7 +9,6 @@ import com.mlkit.textrecognition.R
 import com.mlkit.textrecognition.presentation.base.BaseActivity
 import com.mlkit.textrecognition.presentation.utils.AppViewModelFactory
 import kotlinx.android.synthetic.main.main_activity.*
-import timber.log.Timber
 import javax.inject.Inject
 
 class MainActivity : BaseActivity() {
@@ -38,39 +37,38 @@ class MainActivity : BaseActivity() {
     private fun processImage(image: FirebaseVisionImage) {
         val detector = FirebaseVision.getInstance().onDeviceTextRecognizer
         val result = detector.processImage(image)
-            .addOnSuccessListener { firebaseVisionText ->
-                // Task completed successfully
-                // ...
+                .addOnSuccessListener { firebaseVisionText ->
+                    // Task completed successfully
+                    // ...
 
-                val resultText = firebaseVisionText.text
-                for (block in firebaseVisionText.textBlocks) {
-                    val blockText = block.text
-                    val blockConfidence = block.confidence
-                    val blockLanguages = block.recognizedLanguages
-                    val blockCornerPoints = block.cornerPoints
-                    val blockFrame = block.boundingBox
-                    for (line in block.lines) {
-                        val lineText = line.text
-                        val lineConfidence = line.confidence
-                        val lineLanguages = line.recognizedLanguages
-                        val lineCornerPoints = line.cornerPoints
-                        val lineFrame = line.boundingBox
-                        for (element in line.elements) {
-                            val elementText = element.text
-                            val elementConfidence = element.confidence
-                            val elementLanguages = element.recognizedLanguages
-                            val elementCornerPoints = element.cornerPoints
-                            val elementFrame = element.boundingBox
+                    val resultText = firebaseVisionText.text
+                    for (block in firebaseVisionText.textBlocks) {
+                        val blockText = block.text
+                        val blockConfidence = block.confidence
+                        val blockLanguages = block.recognizedLanguages
+                        val blockCornerPoints = block.cornerPoints
+                        val blockFrame = block.boundingBox
+                        for (line in block.lines) {
+                            val lineText = line.text
+                            val lineConfidence = line.confidence
+                            val lineLanguages = line.recognizedLanguages
+                            val lineCornerPoints = line.cornerPoints
+                            val lineFrame = line.boundingBox
+                            for (element in line.elements) {
+                                val elementText = element.text
+                                val elementConfidence = element.confidence
+                                val elementLanguages = element.recognizedLanguages
+                                val elementCornerPoints = element.cornerPoints
+                                val elementFrame = element.boundingBox
+                            }
                         }
+                        val txtValue = "${ma_text_recognized.text}$blockText\n"
+                        ma_text_recognized.text = txtValue
                     }
-                    Timber.e(blockText)
                 }
-
-                Timber.e(firebaseVisionText.toString())
-            }
-            .addOnFailureListener {
-                // Task failed with an exception
-                // ...
-            }
+                .addOnFailureListener {
+                    // Task failed with an exception
+                    // ...
+                }
     }
 }
