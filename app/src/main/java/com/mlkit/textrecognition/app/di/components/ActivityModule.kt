@@ -1,6 +1,7 @@
 package com.mlkit.textrecognition.app.di.components
 
 import com.mlkit.textrecognition.presentation.modules.main.MainActivity
+import com.mlkit.textrecognition.presentation.modules.simple.SimpleActivity
 import com.mlkit.textrecognition.presentation.modules.splash.SplashActivity
 
 import dagger.Module
@@ -14,4 +15,7 @@ abstract class ActivityModule {
 
     @ContributesAndroidInjector
     internal abstract fun splashActivity(): SplashActivity
+
+    @ContributesAndroidInjector
+    internal abstract fun simpleActivity(): SimpleActivity
 }

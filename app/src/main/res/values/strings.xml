@@ -3,4 +3,5 @@
 
     <string name="bitmap">Bitmap</string>
     <string name="pick_or_capture">Pick or Capture</string>
+    <string name="recognize">Recognize</string>
 </resources>

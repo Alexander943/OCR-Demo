@@ -1,35 +1,28 @@
-package com.mlkit.textrecognition.presentation.modules.main
+package com.mlkit.textrecognition.presentation.modules.simple
 
 import android.graphics.BitmapFactory
 import android.os.Bundle
-import androidx.lifecycle.ViewModelProviders
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.google.firebase.ml.vision.FirebaseVision
 import com.google.firebase.ml.vision.common.FirebaseVisionImage
 import com.mlkit.textrecognition.R
 import com.mlkit.textrecognition.presentation.base.BaseActivity
-import com.mlkit.textrecognition.presentation.utils.AppViewModelFactory
-import kotlinx.android.synthetic.main.main_activity.*
-import javax.inject.Inject
+import kotlinx.android.synthetic.main.image_text_activity.*
 
-class MainActivity : BaseActivity() {
+class SimpleActivity : BaseActivity() {
 
-    @Inject
-    lateinit var viewModelFactory: AppViewModelFactory
-
-    @Inject
-    lateinit var router: MainRouter
-
-    private lateinit var viewModel: MainViewModel
-
-    override val layoutResource = R.layout.main_activity
+    override val layoutResource = R.layout.image_text_activity
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        viewModel = ViewModelProviders.of(
-                this@MainActivity, viewModelFactory).get(MainViewModel::class.java)
+        Glide.with(this@SimpleActivity)
+                .load(R.drawable.alice_in_wonderland)
+                .apply(RequestOptions().centerInside())
+                .into(ita_image)
 
-        ma_btn_bitmap.setOnClickListener { router.openSimpleActivity(this@MainActivity) }
+        ita_btn_bitmap.setOnClickListener { performBitmapRecognition() }
     }
 
     private fun performBitmapRecognition() {
@@ -39,6 +32,7 @@ class MainActivity : BaseActivity() {
     }
 
     private fun processImage(image: FirebaseVisionImage) {
+        var recognizedText = ""
         val detector = FirebaseVision.getInstance().onDeviceTextRecognizer
         val result = detector.processImage(image)
                 .addOnSuccessListener { firebaseVisionText ->
@@ -66,9 +60,9 @@ class MainActivity : BaseActivity() {
                                 val elementFrame = element.boundingBox
                             }
                         }
-                        val txtValue = "${ma_text_recognized.text}$blockText\n"
-                        ma_text_recognized.text = txtValue
+                        recognizedText += blockText + "\n"
                     }
+                    ita_text_recognized.text = recognizedText
                 }
                 .addOnFailureListener {
                     // Task failed with an exception
