@@ -11,8 +11,8 @@ abstract class BaseViewModel : ViewModel() {
 
     protected val compositeDisposable = CompositeDisposable()
 
-    val loading = SingleLiveEvent<Boolean>()
-    val error = SingleLiveEvent<Throwable>()
+    protected val loading = SingleLiveEvent<Boolean>()
+    protected val error = SingleLiveEvent<Throwable>()
 
     override fun onCleared() {
         compositeDisposable.clear()

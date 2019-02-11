@@ -11,7 +11,8 @@ abstract class BaseFragment : DaggerFragment() {
     protected abstract val fragmentLayout: Int
     protected abstract val isLaunchLoading: Boolean
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+                              savedInstanceState: Bundle?): View? {
         return inflater.inflate(fragmentLayout, container, false)
     }
 
