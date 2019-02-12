@@ -42,24 +42,6 @@ class SimpleActivity : BaseActivity() {
                     val resultText = firebaseVisionText.text
                     for (block in firebaseVisionText.textBlocks) {
                         val blockText = block.text
-                        val blockConfidence = block.confidence
-                        val blockLanguages = block.recognizedLanguages
-                        val blockCornerPoints = block.cornerPoints
-                        val blockFrame = block.boundingBox
-                        for (line in block.lines) {
-                            val lineText = line.text
-                            val lineConfidence = line.confidence
-                            val lineLanguages = line.recognizedLanguages
-                            val lineCornerPoints = line.cornerPoints
-                            val lineFrame = line.boundingBox
-                            for (element in line.elements) {
-                                val elementText = element.text
-                                val elementConfidence = element.confidence
-                                val elementLanguages = element.recognizedLanguages
-                                val elementCornerPoints = element.cornerPoints
-                                val elementFrame = element.boundingBox
-                            }
-                        }
                         recognizedText += blockText + "\n"
                     }
                     ita_text_recognized.text = recognizedText
